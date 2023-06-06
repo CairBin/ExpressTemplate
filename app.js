@@ -7,11 +7,14 @@ const mustacheExpress = require('mustache-express')
 //routes
 const indexRoute = require('./routes/indexRoute')
 
-const staticPath = path.join(__dirname,localConfig.path.static)
+const staticPath = path.join(__dirname, localConfig.path.static)
 const app = express()
 
 //static file
 app.use(express.static(staticPath))
+
+//POST params
+app.use(express.urlencoded({ extended: false }))
 
 //template
 app.engine('mustache', mustacheExpress());
